@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE-LAG</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- ══════════ NAVBAR ══════════ -->
+    <nav class="navbar">
+        <a href="#home" class="nav-logo">THE-LAG</a>
+
+        <ul class="nav-links">
+            <li><a href="#home" class="nav-link active">Home</a></li>
+            <li><a href="#about" class="nav-link">About</a></li>
+            <li><a href="#analyze" class="nav-link">Analyze</a></li>
+            <li><a href="#faq" class="nav-link">FAQ</a></li>
+            <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+
+        <div class="nav-lang">
+            <button class="lang-btn active" data-lang="en" title="English">
+                <svg viewBox="0 0 60 30" width="24" height="14">
+                    <clipPath id="s"><path d="M0,0 v30 h60 v-30 z"/></clipPath>
+                    <clipPath id="t"><path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/></clipPath>
+                    <g clip-path="url(#s)">
+                        <path d="M0,0 v30 h60 v-30 z" fill="#012169"/>
+                        <path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/>
+                        <path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#t)" stroke="#C8102E" stroke-width="4"/>
+                        <path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/>
+                        <path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/>
+                    </g>
+                </svg>
+                <span>EN</span>
+            </button>
+            <button class="lang-btn" data-lang="gr" title="Ελληνικά">
+                <svg viewBox="0 0 27 18" width="24" height="14">
+                    <rect width="27" height="18" fill="#0D5EAF"/>
+                    <g fill="#fff">
+                        <rect y="2" width="27" height="2"/>
+                        <rect y="6" width="27" height="2"/>
+                        <rect y="10" width="27" height="2"/>
+                        <rect y="14" width="27" height="2"/>
+                    </g>
+                    <rect width="10" height="10" fill="#0D5EAF"/>
+                    <rect x="4" width="2" height="10" fill="#fff"/>
+                    <rect y="4" width="10" height="2" fill="#fff"/>
+                </svg>
+                <span>GR</span>
+            </button>
+        </div>
+
+        <!-- Mobile hamburger -->
+        <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <!-- Mobile menu -->
+    <div class="mobile-menu" id="mobile-menu">
+        <ul>
+            <li><a href="#home" class="mobile-link">Home</a></li>
+            <li><a href="#about" class="mobile-link">About</a></li>
+            <li><a href="#analyze" class="mobile-link">Analyze</a></li>
+            <li><a href="#faq" class="mobile-link">FAQ</a></li>
+            <li><a href="#contact" class="mobile-link">Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- ══════════ HOME ══════════ -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <p class="hero-tag" data-en="Thesis Project — Neapolis University Pafos" data-gr="Πτυχιακή Εργασία — Πανεπιστήμιο Νεάπολις Πάφου">Thesis Project — Neapolis University Pafos</p>
+            <h1>
+                <span data-en="Exploring the Temporal Lag" data-gr="Διερεύνηση της Χρονικής">Exploring the Temporal Lag</span><br>
+                <span data-en="Between Gaze &amp; Finger as a" data-gr="Καθυστέρησης Βλέμματος &amp; Δακτύλου">Between Gaze &amp; Finger as a</span><br>
+                <em data-en="Reading Difficulty Biomarker" data-gr="Δείκτη Δυσκολίας Ανάγνωσης">Reading Difficulty Biomarker</em>
+            </h1>
+            <p class="hero-desc" data-en="Using XGBoost, MLP neural networks, and SHAP explainability to quantify cognitive load during reading — from eye-tracking and finger-tracking signals." data-gr="Χρήση XGBoost, νευρωνικών δικτύων MLP και SHAP explainability για την ποσοτικοποίηση της γνωστικής φόρτισης κατά την ανάγνωση — από σήματα eye-tracking και finger-tracking.">Using XGBoost, MLP neural networks, and SHAP explainability to quantify cognitive load during reading — from eye-tracking and finger-tracking signals.</p>
+            <a href="#analyze" class="btn-primary hero-btn" data-en="Start Analysis" data-gr="Έναρξη Ανάλυσης">Start Analysis</a>
+        </div>
+    </section>
+
+    <!-- ══════════ ABOUT ══════════ -->
+    <section id="about" class="section reveal">
+        <div class="section-inner">
+            <h2 class="section-title" data-en="About the Project" data-gr="Σχετικά με το Έργο">About the Project</h2>
+            <div class="about-grid">
+                <div class="about-card">
+                    <div class="about-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M20 12c-1.5 2.5-4.5 5-8 5s-6.5-2.5-8-5c1.5-2.5 4.5-5 8-5s6.5 2.5 8 5z"/></svg>
+                    </div>
+                    <h3 data-en="Eye Tracking" data-gr="Παρακολούθηση Ματιού">Eye Tracking</h3>
+                    <p data-en="Fixation durations, regressions, and reading times reveal how the brain processes each word during reading." data-gr="Οι διάρκειες στερεοπαγίας, οι παλινδρομήσεις και οι χρόνοι ανάγνωσης αποκαλύπτουν πώς ο εγκέφαλος επεξεργάζεται κάθε λέξη.">Fixation durations, regressions, and reading times reveal how the brain processes each word during reading.</p>
+                </div>
+                <div class="about-card">
+                    <div class="about-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 11V6a2 2 0 0 0-2-2 2 2 0 0 0-2 2v0"/><path d="M14 10V4a2 2 0 0 0-2-2 2 2 0 0 0-2 2v6"/><path d="M10 10.5V6a2 2 0 0 0-2-2 2 2 0 0 0-2 2v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.9-5.7-2.4L3.4 16a2 2 0 0 1 3.2-2.4l.6.8"/></svg>
+                    </div>
+                    <h3 data-en="Finger Tracking" data-gr="Παρακολούθηση Δακτύλου">Finger Tracking</h3>
+                    <p data-en="Coverage percentages from finger-guided reading capture the motor strategy readers use to manage text difficulty." data-gr="Τα ποσοστά κάλυψης από την ανάγνωση με καθοδήγηση δακτύλου αποτυπώνουν την κινητική στρατηγική διαχείρισης δυσκολίας.">Coverage percentages from finger-guided reading capture the motor strategy readers use to manage text difficulty.</p>
+                </div>
+                <div class="about-card">
+                    <div class="about-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20v-6M6 20V10M18 20V4"/></svg>
+                    </div>
+                    <h3 data-en="Temporal Lag" data-gr="Χρονική Καθυστέρηση">Temporal Lag</h3>
+                    <p data-en="The engineered lag_proxy feature (TRT_normalized − coverage) acts as a biomarker for cognitive load at the word level." data-gr="Το lag_proxy (TRT_normalized − coverage) λειτουργεί ως βιοδείκτης γνωστικής φόρτισης σε επίπεδο λέξης.">The engineered lag_proxy feature (TRT_normalized − coverage) acts as a biomarker for cognitive load at the word level.</p>
+                </div>
+                <div class="about-card">
+                    <div class="about-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.7l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.7l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.3 7 12 12 20.7 7"/><line x1="12" y1="22" x2="12" y2="12"/></svg>
+                    </div>
+                    <h3 data-en="ML Models" data-gr="Μοντέλα ML">ML Models</h3>
+                    <p data-en="XGBoost (300 estimators) and MLP (128-64-32) are trained and compared, with SHAP values providing full explainability." data-gr="XGBoost (300 estimators) και MLP (128-64-32) εκπαιδεύονται και συγκρίνονται, με SHAP για πλήρη ερμηνευσιμότητα.">XGBoost (300 estimators) and MLP (128-64-32) are trained and compared, with SHAP values providing full explainability.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════ ANALYZE ══════════ -->
+    <section id="analyze" class="section section-alt reveal">
+        <div class="section-inner">
+            <h2 class="section-title" data-en="Analyze" data-gr="Ανάλυση">Analyze</h2>
+            <p class="section-desc" data-en="Upload your eye-tracking &amp; finger-tracking dataset to run the full ML pipeline." data-gr="Ανεβάστε το dataset eye-tracking &amp; finger-tracking για εκτέλεση του ML pipeline.">Upload your eye-tracking &amp; finger-tracking dataset to run the full ML pipeline.</p>
+
+            <div class="upload-zone" id="upload-zone">
+                <div class="upload-icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                        <polyline points="17 8 12 3 7 8"/>
+                        <line x1="12" y1="3" x2="12" y2="15"/>
+                    </svg>
+                </div>
+                <p class="upload-text" data-en="Drop your <strong>.xlsx</strong> or <strong>.csv</strong> file here" data-gr="Σύρετε το αρχείο <strong>.xlsx</strong> ή <strong>.csv</strong> εδώ">Drop your <strong>.xlsx</strong> or <strong>.csv</strong> file here</p>
+                <p class="upload-hint" data-en="or click to browse" data-gr="ή κάντε κλικ για αναζήτηση">or click to browse</p>
+                <input type="file" id="file-input" accept=".xlsx,.csv" hidden>
+            </div>
+
+            <div id="file-info" class="file-info hidden">
+                <span id="file-name" class="file-name"></span>
+                <button id="btn-clear-file" class="btn-icon" title="Remove file">&times;</button>
+            </div>
+
+            <button id="btn-run" class="btn-primary btn-run" disabled>
+                <span class="btn-label" data-en="Run Pipeline" data-gr="Εκτέλεση Pipeline">Run Pipeline</span>
+                <span class="btn-spinner hidden"></span>
+            </button>
+
+            <!-- Progress -->
+            <div id="progress-section" class="progress-section hidden">
+                <div class="progress-bar-track">
+                    <div id="progress-bar" class="progress-bar-fill"></div>
+                </div>
+                <p id="progress-text" class="progress-text">Initializing…</p>
+            </div>
+
+            <!-- Results -->
+            <div id="results" class="results hidden">
+
+                <div class="results-header">
+                    <h3 class="results-title" data-en="Results" data-gr="Αποτελέσματα">Results</h3>
+                    <button id="btn-download" class="btn-download" data-en="Download Results" data-gr="Λήψη Αποτελεσμάτων">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                            <polyline points="7 10 12 15 17 10"/>
+                            <line x1="12" y1="15" x2="12" y2="3"/>
+                        </svg>
+                        <span data-en="Download Results" data-gr="Λήψη Αποτελεσμάτων">Download Results</span>
+                    </button>
+                </div>
+
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <span class="metric-label">XGBoost Accuracy</span>
+                        <span id="xgb-acc" class="metric-value">—</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="metric-label">XGBoost F1</span>
+                        <span id="xgb-f1" class="metric-value">—</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="metric-label">MLP Accuracy</span>
+                        <span id="mlp-acc" class="metric-value">—</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="metric-label">MLP F1</span>
+                        <span id="mlp-f1" class="metric-value">—</span>
+                    </div>
+                </div>
+
+                <div class="reports-grid">
+                    <div class="report-card">
+                        <h4>XGBoost — Classification Report</h4>
+                        <pre id="xgb-report" class="report-pre"></pre>
+                    </div>
+                    <div class="report-card">
+                        <h4>MLP — Classification Report</h4>
+                        <pre id="mlp-report" class="report-pre"></pre>
+                    </div>
+                </div>
+
+                <div class="reports-grid">
+                    <div class="report-card">
+                        <h4>XGBoost — Confusion Matrix</h4>
+                        <div id="xgb-cm" class="cm-container"></div>
+                    </div>
+                    <div class="report-card">
+                        <h4>MLP — Confusion Matrix</h4>
+                        <div id="mlp-cm" class="cm-container"></div>
+                    </div>
+                </div>
+
+                <div class="result-panel">
+                    <h4>SHAP Feature Importance</h4>
+                    <p class="panel-desc" data-en="Top features driving XGBoost predictions, ranked by mean |SHAP value|." data-gr="Κορυφαία χαρακτηριστικά που οδηγούν τις προβλέψεις XGBoost.">Top features driving XGBoost predictions, ranked by mean |SHAP value|.</p>
+                    <div class="img-wrap">
+                        <img id="shap-img" src="" alt="SHAP Summary Plot" class="result-img hidden">
+                        <p id="shap-placeholder" class="placeholder-text" data-en="Run the pipeline to generate the SHAP plot." data-gr="Εκτελέστε το pipeline για το SHAP plot.">Run the pipeline to generate the SHAP plot.</p>
+                    </div>
+                </div>
+
+                <div class="result-panel">
+                    <h4>Cross-Correlation Analysis</h4>
+                    <p class="panel-desc" data-en="Temporal alignment between eye-tracking and finger-tracking signals." data-gr="Χρονική ευθυγράμμιση σημάτων eye-tracking και finger-tracking.">Temporal alignment between eye-tracking and finger-tracking signals.</p>
+                    <div class="img-wrap">
+                        <img id="xcorr-img" src="" alt="Cross-Correlation Plot" class="result-img hidden">
+                        <p id="xcorr-placeholder" class="placeholder-text" data-en="Run the pipeline to generate the cross-correlation plot." data-gr="Εκτελέστε το pipeline για το cross-correlation plot.">Run the pipeline to generate the cross-correlation plot.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════ FAQ ══════════ -->
+    <section id="faq" class="section reveal">
+        <div class="section-inner">
+            <h2 class="section-title" data-en="FAQ" data-gr="Συχνές Ερωτήσεις">FAQ</h2>
+            <div class="faq-list">
+                <details class="faq-item">
+                    <summary data-en="What is the Temporal Lag?" data-gr="Τι είναι η Χρονική Καθυστέρηση;">What is the Temporal Lag?</summary>
+                    <p data-en="The temporal lag measures the mismatch between where your eyes focus and where your finger points during reading. A larger lag suggests greater cognitive difficulty processing that word." data-gr="Η χρονική καθυστέρηση μετρά τη διαφορά μεταξύ του σημείου εστίασης του ματιού και του δακτύλου κατά την ανάγνωση. Μεγαλύτερη καθυστέρηση υποδηλώνει μεγαλύτερη γνωστική δυσκολία.">The temporal lag measures the mismatch between where your eyes focus and where your finger points during reading. A larger lag suggests greater cognitive difficulty processing that word.</p>
+                </details>
+                <details class="faq-item">
+                    <summary data-en="What is lag_proxy?" data-gr="Τι είναι το lag_proxy;">What is lag_proxy?</summary>
+                    <p data-en="Since the dataset lacks direct timestamp alignment between ET and FT sessions, lag_proxy = TRT_normalized − coverage serves as an indirect measure of temporal lag." data-gr="Επειδή το dataset δεν έχει ευθυγράμμιση χρονοσφραγίδων μεταξύ ET και FT, το lag_proxy = TRT_normalized − coverage χρησιμεύει ως έμμεσο μέτρο.">Since the dataset lacks direct timestamp alignment between ET and FT sessions, lag_proxy = TRT_normalized − coverage serves as an indirect measure of temporal lag.</p>
+                </details>
+                <details class="faq-item">
+                    <summary data-en="Why XGBoost over deep learning?" data-gr="Γιατί XGBoost αντί deep learning;">Why XGBoost over deep learning?</summary>
+                    <p data-en="XGBoost excels on structured/tabular data, trains faster, and offers native feature importance. Combined with SHAP, it provides full explainability — essential for scientific research." data-gr="Ο XGBoost υπερτερεί σε δομημένα δεδομένα, εκπαιδεύεται γρηγορότερα και με SHAP παρέχει πλήρη ερμηνευσιμότητα — απαραίτητη για επιστημονική έρευνα.">XGBoost excels on structured/tabular data, trains faster, and offers native feature importance. Combined with SHAP, it provides full explainability — essential for scientific research.</p>
+                </details>
+                <details class="faq-item">
+                    <summary data-en="What dataset format is required?" data-gr="Τι μορφή dataset χρειάζεται;">What dataset format is required?</summary>
+                    <p data-en="Upload an .xlsx or .csv file following the ΤΑΧΙΤΑΡΙ corpus structure with columns for eye-tracking metrics, finger-tracking coverage, and linguistic features." data-gr="Ανεβάστε .xlsx ή .csv σύμφωνα με τη δομή ΤΑΧΙΤΑΡΙ, με στήλες eye-tracking, finger-tracking coverage και γλωσσικά χαρακτηριστικά.">Upload an .xlsx or .csv file following the ΤΑΧΙΤΑΡΙ corpus structure with columns for eye-tracking metrics, finger-tracking coverage, and linguistic features.</p>
+                </details>
+                <details class="faq-item">
+                    <summary data-en="What does SHAP show?" data-gr="Τι δείχνει το SHAP;">What does SHAP show?</summary>
+                    <p data-en="SHAP quantifies each feature's contribution to every prediction. The summary plot ranks features by their average impact on model output." data-gr="Το SHAP ποσοτικοποιεί τη συνεισφορά κάθε χαρακτηριστικού σε κάθε πρόβλεψη. Το summary plot κατατάσσει τα χαρακτηριστικά κατά μέσο αντίκτυπο.">SHAP quantifies each feature's contribution to every prediction. The summary plot ranks features by their average impact on model output.</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════ CONTACT ══════════ -->
+    <section id="contact" class="section section-alt reveal">
+        <div class="section-inner contact-inner">
+            <h2 class="section-title" data-en="Contact" data-gr="Επικοινωνία">Contact</h2>
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <span class="contact-label" data-en="Student" data-gr="Φοιτητής">Student</span>
+                    <span class="contact-value">Giorgos Sourailidis</span>
+                    <span class="contact-sub">1220703523</span>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-label" data-en="Supervisor" data-gr="Επιβλέπων">Supervisor</span>
+                    <span class="contact-value">Dr. Tasos Antoniadis</span>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-label" data-en="University" data-gr="Πανεπιστήμιο">University</span>
+                    <span class="contact-value" data-en="Neapolis University Pafos" data-gr="Πανεπιστήμιο Νεάπολις Πάφου">Neapolis University Pafos</span>
+                    <span class="contact-sub" data-en="Department of Computer Science" data-gr="Τμήμα Πληροφορικής">Department of Computer Science</span>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-label">GitHub</span>
+                    <a href="https://github.com/s0uro/THESIS-II" target="_blank" rel="noopener" class="contact-link">s0uro/THESIS-II</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════ BACK TO TOP ══════════ -->
+    <button id="back-to-top" class="back-to-top" aria-label="Back to top">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="18 15 12 9 6 15"/>
+        </svg>
+    </button>
+
+    <!-- ══════════ FOOTER ══════════ -->
+    <footer class="footer">
+        <p>THE-LAG &middot; &copy; 2025</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
