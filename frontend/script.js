@@ -32,6 +32,8 @@ function applyLang() {
         }
     });
     document.documentElement.lang = currentLang === "gr" ? "el" : "en";
+    // Update toggle buttons if they exist
+    if (typeof updateToggleTexts === "function") updateToggleTexts();
 }
 
 // ──────────── Active Nav Link on Scroll ────────────
@@ -74,6 +76,35 @@ $$(".mobile-link").forEach((link) => {
         mobileMenu.classList.remove("open");
     });
 });
+
+// ──────────── Expandable About Cards ────────────
+
+$$(".about-toggle").forEach((btn) => {
+    btn.addEventListener("click", () => {
+        const card = btn.closest(".about-card");
+        const isExpanded = card.classList.toggle("expanded");
+
+        // Update button text based on language
+        if (isExpanded) {
+            btn.textContent = btn.getAttribute(`data-${currentLang}-hide`);
+        } else {
+            btn.textContent = btn.getAttribute(`data-${currentLang}-show`);
+        }
+    });
+});
+
+// Update toggle button text on language change
+function updateToggleTexts() {
+    $$(".about-toggle").forEach((btn) => {
+        const card = btn.closest(".about-card");
+        const isExpanded = card.classList.contains("expanded");
+        if (isExpanded) {
+            btn.textContent = btn.getAttribute(`data-${currentLang}-hide`);
+        } else {
+            btn.textContent = btn.getAttribute(`data-${currentLang}-show`);
+        }
+    });
+}
 
 // ──────────── File Upload ────────────
 

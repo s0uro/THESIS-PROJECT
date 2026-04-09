@@ -91,34 +91,80 @@
         <div class="section-inner">
             <h2 class="section-title" data-en="About the Project" data-gr="Σχετικά με το Έργο">About the Project</h2>
             <div class="about-grid">
-                <div class="about-card">
+
+                <div class="about-card expandable" data-card="et">
                     <div class="about-icon">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M20 12c-1.5 2.5-4.5 5-8 5s-6.5-2.5-8-5c1.5-2.5 4.5-5 8-5s6.5 2.5 8 5z"/></svg>
                     </div>
                     <h3 data-en="Eye Tracking" data-gr="Παρακολούθηση Ματιού">Eye Tracking</h3>
-                    <p data-en="Fixation durations, regressions, and reading times reveal how the brain processes each word during reading." data-gr="Οι διάρκειες στερεοπαγίας, οι παλινδρομήσεις και οι χρόνοι ανάγνωσης αποκαλύπτουν πώς ο εγκέφαλος επεξεργάζεται κάθε λέξη.">Fixation durations, regressions, and reading times reveal how the brain processes each word during reading.</p>
+                    <p class="about-short" data-en="Fixation durations, regressions, and reading times reveal how the brain processes each word during reading." data-gr="Οι διάρκειες στερεοπαγίας, οι παλινδρομήσεις και οι χρόνοι ανάγνωσης αποκαλύπτουν πώς ο εγκέφαλος επεξεργάζεται κάθε λέξη.">Fixation durations, regressions, and reading times reveal how the brain processes each word during reading.</p>
+                    <div class="about-detail">
+                        <p data-en="In this project, eye-tracking data is captured using specialized equipment that records where the reader's gaze lands on each word. The key metrics extracted per word-token are:" data-gr="Σε αυτό το project, τα δεδομένα eye-tracking συλλέγονται με εξειδικευμένο εξοπλισμό που καταγράφει πού πέφτει το βλέμμα του αναγνώστη σε κάθε λέξη. Οι βασικές μετρήσεις ανά λέξη είναι:">In this project, eye-tracking data is captured using specialized equipment that records where the reader's gaze lands on each word. The key metrics extracted per word-token are:</p>
+                        <ul>
+                            <li><strong>FFD</strong> <span data-en="— First Fixation Duration: how long the eye first rests on the word (ms)" data-gr="— First Fixation Duration: πόσο χρόνο σταματά αρχικά το μάτι στη λέξη (ms)">— First Fixation Duration: how long the eye first rests on the word (ms)</span></li>
+                            <li><strong>FPD</strong> <span data-en="— First Pass Duration: total time spent on the word during the first reading pass (ms)" data-gr="— First Pass Duration: συνολικός χρόνος στη λέξη κατά το πρώτο πέρασμα ανάγνωσης (ms)">— First Pass Duration: total time spent on the word during the first reading pass (ms)</span></li>
+                            <li><strong>TRT</strong> <span data-en="— Total Reading Time: the cumulative time the eye spends on a word across all visits (ms). Used in the target variable." data-gr="— Total Reading Time: ο συνολικός χρόνος που ξοδεύει το μάτι σε μια λέξη σε όλες τις επισκέψεις (ms). Χρησιμοποιείται στη μεταβλητή στόχο.">— Total Reading Time: the cumulative time the eye spends on a word across all visits (ms). Used in the target variable.</span></li>
+                            <li><strong>RPD</strong> <span data-en="— Regression Path Duration: time before the eye exits the word to the right, including re-reading (ms)" data-gr="— Regression Path Duration: χρόνος μέχρι το μάτι να φύγει δεξιά, συμπεριλαμβανομένης της επανανάγνωσης (ms)">— Regression Path Duration: time before the eye exits the word to the right, including re-reading (ms)</span></li>
+                            <li><strong>fixNum</strong> <span data-en="— number of fixations landing on the word" data-gr="— αριθμός στερεοπαγιών στη λέξη">— number of fixations landing on the word</span></li>
+                            <li><strong>isReg</strong> <span data-en="— whether a regression (backward eye movement) started after this word" data-gr="— αν ξεκίνησε παλινδρόμηση (πίσω κίνηση ματιού) μετά τη λέξη">— whether a regression (backward eye movement) started after this word</span></li>
+                        </ul>
+                        <p data-en="These metrics are collected from the Greek ΤΑΧΙΤΑΡΙ reading corpus, with 48 participants reading 4 texts in both aloud and silent modes." data-gr="Οι μετρήσεις αυτές συλλέγονται από το ελληνικό corpus ανάγνωσης ΤΑΧΙΤΑΡΙ, με 48 συμμετέχοντες να διαβάζουν 4 κείμενα σε φωνητική και σιωπηλή ανάγνωση.">These metrics are collected from the Greek ΤΑΧΙΤΑΡΙ reading corpus, with 48 participants reading 4 texts in both aloud and silent modes.</p>
+                    </div>
+                    <button class="about-toggle" data-en-show="Learn more" data-gr-show="Περισσότερα" data-en-hide="Show less" data-gr-hide="Λιγότερα">Learn more</button>
                 </div>
-                <div class="about-card">
+
+                <div class="about-card expandable" data-card="ft">
                     <div class="about-icon">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 11V6a2 2 0 0 0-2-2 2 2 0 0 0-2 2v0"/><path d="M14 10V4a2 2 0 0 0-2-2 2 2 0 0 0-2 2v6"/><path d="M10 10.5V6a2 2 0 0 0-2-2 2 2 0 0 0-2 2v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.9-5.7-2.4L3.4 16a2 2 0 0 1 3.2-2.4l.6.8"/></svg>
                     </div>
                     <h3 data-en="Finger Tracking" data-gr="Παρακολούθηση Δακτύλου">Finger Tracking</h3>
-                    <p data-en="Coverage percentages from finger-guided reading capture the motor strategy readers use to manage text difficulty." data-gr="Τα ποσοστά κάλυψης από την ανάγνωση με καθοδήγηση δακτύλου αποτυπώνουν την κινητική στρατηγική διαχείρισης δυσκολίας.">Coverage percentages from finger-guided reading capture the motor strategy readers use to manage text difficulty.</p>
+                    <p class="about-short" data-en="Coverage percentages from finger-guided reading capture the motor strategy readers use to manage text difficulty." data-gr="Τα ποσοστά κάλυψης από την ανάγνωση με καθοδήγηση δακτύλου αποτυπώνουν την κινητική στρατηγική διαχείρισης δυσκολίας.">Coverage percentages from finger-guided reading capture the motor strategy readers use to manage text difficulty.</p>
+                    <div class="about-detail">
+                        <p data-en="Finger tracking captures the kinetic behavior of readers who use their finger to guide attention along the text. In the ΤΑΧΙΤΑΡΙ dataset, FT sessions are recorded separately from ET sessions for the same participants and texts. The key metrics are:" data-gr="Η παρακολούθηση δακτύλου καταγράφει την κινητική συμπεριφορά αναγνωστών που χρησιμοποιούν το δάκτυλο για καθοδήγηση. Στο dataset ΤΑΧΙΤΑΡΙ, οι FT συνεδρίες καταγράφονται ξεχωριστά από τις ET για τους ίδιους συμμετέχοντες. Βασικές μετρήσεις:">Finger tracking captures the kinetic behavior of readers who use their finger to guide attention along the text. In the ΤΑΧΙΤΑΡΙ dataset, FT sessions are recorded separately from ET sessions for the same participants and texts. The key metrics are:</p>
+                        <ul>
+                            <li><strong>coverage</strong> <span data-en="— the percentage (0.0–1.0) of the word-token that was covered by the finger during reading. This is the core FT signal used to compute lag_proxy." data-gr="— το ποσοστό (0.0–1.0) της λέξης που καλύφθηκε από το δάκτυλο κατά την ανάγνωση. Αυτό είναι το βασικό FT σήμα για τον υπολογισμό του lag_proxy.">— the percentage (0.0–1.0) of the word-token that was covered by the finger during reading. This is the core FT signal used to compute lag_proxy.</span></li>
+                            <li><strong>dt</strong> <span data-en="— finger-tracking time (ms): the duration the finger spent on each word position." data-gr="— χρόνος δακτυλο-παρακολούθησης (ms): η διάρκεια που πέρασε το δάκτυλο σε κάθε θέση λέξης.">— finger-tracking time (ms): the duration the finger spent on each word position.</span></li>
+                        </ul>
+                        <p data-en="A critical challenge of this project is that ET and FT data cannot be directly paired per-word by timestamp — they come from separate sessions. This is why we engineered lag_proxy as an indirect temporal lag measure." data-gr="Βασική πρόκληση του project είναι ότι τα ET και FT δεδομένα δεν μπορούν να ζευγαρωθούν απευθείας ανά λέξη — προέρχονται από ξεχωριστές συνεδρίες. Γι' αυτό κατασκευάσαμε το lag_proxy ως έμμεσο μέτρο.">A critical challenge of this project is that ET and FT data cannot be directly paired per-word by timestamp — they come from separate sessions. This is why we engineered lag_proxy as an indirect temporal lag measure.</p>
+                    </div>
+                    <button class="about-toggle" data-en-show="Learn more" data-gr-show="Περισσότερα" data-en-hide="Show less" data-gr-hide="Λιγότερα">Learn more</button>
                 </div>
-                <div class="about-card">
+
+                <div class="about-card expandable" data-card="lag">
                     <div class="about-icon">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20v-6M6 20V10M18 20V4"/></svg>
                     </div>
                     <h3 data-en="Temporal Lag" data-gr="Χρονική Καθυστέρηση">Temporal Lag</h3>
-                    <p data-en="The engineered lag_proxy feature (TRT_normalized − coverage) acts as a biomarker for cognitive load at the word level." data-gr="Το lag_proxy (TRT_normalized − coverage) λειτουργεί ως βιοδείκτης γνωστικής φόρτισης σε επίπεδο λέξης.">The engineered lag_proxy feature (TRT_normalized − coverage) acts as a biomarker for cognitive load at the word level.</p>
+                    <p class="about-short" data-en="The engineered lag_proxy feature (TRT_normalized − coverage) acts as a biomarker for cognitive load at the word level." data-gr="Το lag_proxy (TRT_normalized − coverage) λειτουργεί ως βιοδείκτης γνωστικής φόρτισης σε επίπεδο λέξης.">The engineered lag_proxy feature (TRT_normalized − coverage) acts as a biomarker for cognitive load at the word level.</p>
+                    <div class="about-detail">
+                        <p data-en="The temporal lag is the core novel contribution of this thesis. Since the dataset lacks direct timestamp alignment between eye-tracking and finger-tracking sessions, we cannot compute a direct time difference. Instead, the engineered feature is:" data-gr="Η χρονική καθυστέρηση είναι η βασική πρωτότυπη συνεισφορά αυτής της πτυχιακής. Επειδή το dataset δεν έχει ευθυγράμμιση χρονοσφραγίδων μεταξύ ET και FT, δεν μπορούμε να υπολογίσουμε άμεση χρονική διαφορά. Αντ' αυτού:">The temporal lag is the core novel contribution of this thesis. Since the dataset lacks direct timestamp alignment between eye-tracking and finger-tracking sessions, we cannot compute a direct time difference. Instead, the engineered feature is:</p>
+                        <div class="formula">lag_proxy = TRT_normalized − coverage</div>
+                        <ul>
+                            <li><span data-en="When lag_proxy is high → the eye spends relatively more time than the finger covers → higher cognitive difficulty" data-gr="Όταν το lag_proxy είναι υψηλό → το μάτι ξοδεύει σχετικά περισσότερο χρόνο από όσο καλύπτει το δάκτυλο → μεγαλύτερη γνωστική δυσκολία">When lag_proxy is high → the eye spends relatively more time than the finger covers → higher cognitive difficulty</span></li>
+                            <li><span data-en="When lag_proxy is low/negative → the finger tracks comfortably alongside the eye → easier processing" data-gr="Όταν το lag_proxy είναι χαμηλό/αρνητικό → το δάκτυλο ακολουθεί άνετα το μάτι → ευκολότερη επεξεργασία">When lag_proxy is low/negative → the finger tracks comfortably alongside the eye → easier processing</span></li>
+                        </ul>
+                        <p data-en="Cross-correlation analysis is also performed to examine the broader temporal alignment patterns between the two modalities across all word positions." data-gr="Γίνεται επίσης ανάλυση cross-correlation για τη μελέτη ευρύτερων μοτίβων χρονικής ευθυγράμμισης μεταξύ των δύο τρόπων σε όλες τις θέσεις λέξεων.">Cross-correlation analysis is also performed to examine the broader temporal alignment patterns between the two modalities across all word positions.</p>
+                    </div>
+                    <button class="about-toggle" data-en-show="Learn more" data-gr-show="Περισσότερα" data-en-hide="Show less" data-gr-hide="Λιγότερα">Learn more</button>
                 </div>
-                <div class="about-card">
+
+                <div class="about-card expandable" data-card="ml">
                     <div class="about-icon">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.7l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.7l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.3 7 12 12 20.7 7"/><line x1="12" y1="22" x2="12" y2="12"/></svg>
                     </div>
                     <h3 data-en="ML Models" data-gr="Μοντέλα ML">ML Models</h3>
-                    <p data-en="XGBoost (300 estimators) and MLP (128-64-32) are trained and compared, with SHAP values providing full explainability." data-gr="XGBoost (300 estimators) και MLP (128-64-32) εκπαιδεύονται και συγκρίνονται, με SHAP για πλήρη ερμηνευσιμότητα.">XGBoost (300 estimators) and MLP (128-64-32) are trained and compared, with SHAP values providing full explainability.</p>
+                    <p class="about-short" data-en="XGBoost (300 estimators) and MLP (128-64-32) are trained and compared, with SHAP values providing full explainability." data-gr="XGBoost (300 estimators) και MLP (128-64-32) εκπαιδεύονται και συγκρίνονται, με SHAP για πλήρη ερμηνευσιμότητα.">XGBoost (300 estimators) and MLP (128-64-32) are trained and compared, with SHAP values providing full explainability.</p>
+                    <div class="about-detail">
+                        <p data-en="Two machine learning models are trained on the same preprocessed dataset and compared:" data-gr="Δύο μοντέλα μηχανικής μάθησης εκπαιδεύονται στο ίδιο προεπεξεργασμένο dataset και συγκρίνονται:">Two machine learning models are trained on the same preprocessed dataset and compared:</p>
+                        <ul>
+                            <li><strong>XGBoost</strong> <span data-en="— Gradient-boosted decision trees (300 estimators). Excels on structured/tabular data, trains fast, and offers native feature importance. SHAP TreeExplainer is used to quantify each feature's contribution." data-gr="— Δέντρα αποφάσεων gradient boosting (300 estimators). Υπερτερεί σε δομημένα δεδομένα, εκπαιδεύεται γρήγορα και προσφέρει native feature importance. Χρησιμοποιείται SHAP TreeExplainer για ποσοτικοποίηση κάθε feature.">— Gradient-boosted decision trees (300 estimators). Excels on structured/tabular data, trains fast, and offers native feature importance. SHAP TreeExplainer is used to quantify each feature's contribution.</span></li>
+                            <li><strong>MLP</strong> <span data-en="— Multi-Layer Perceptron neural network (128→64→32 neurons). Acts as the baseline deep learning model for comparison. SMOTE oversampling is applied to handle class imbalance." data-gr="— Νευρωνικό δίκτυο Multi-Layer Perceptron (128→64→32 νευρώνες). Χρησιμεύει ως baseline μοντέλο deep learning. Εφαρμόζεται SMOTE oversampling για αντιμετώπιση ανισορροπίας κλάσεων.">— Multi-Layer Perceptron neural network (128→64→32 neurons). Acts as the baseline deep learning model for comparison. SMOTE oversampling is applied to handle class imbalance.</span></li>
+                        </ul>
+                        <p data-en="The binary target variable is defined as: TRT > mean AND isReg = 1, indicating words that required both extended reading time and triggered regressions — a strong signal of comprehension difficulty. Models are evaluated using Accuracy, F1-score, classification reports, and confusion matrices." data-gr="Η binary μεταβλητή στόχος ορίζεται ως: TRT > mean AND isReg = 1, δηλαδή λέξεις που χρειάστηκαν εκτεταμένο χρόνο ανάγνωσης και προκάλεσαν παλινδρομήσεις — ισχυρό σήμα δυσκολίας κατανόησης. Τα μοντέλα αξιολογούνται με Accuracy, F1-score, classification reports και confusion matrices.">The binary target variable is defined as: TRT > mean AND isReg = 1, indicating words that required both extended reading time and triggered regressions — a strong signal of comprehension difficulty. Models are evaluated using Accuracy, F1-score, classification reports, and confusion matrices.</p>
+                    </div>
+                    <button class="about-toggle" data-en-show="Learn more" data-gr-show="Περισσότερα" data-en-hide="Show less" data-gr-hide="Λιγότερα">Learn more</button>
                 </div>
+
             </div>
         </div>
     </section>
@@ -128,6 +174,50 @@
         <div class="section-inner">
             <h2 class="section-title" data-en="Analyze" data-gr="Ανάλυση">Analyze</h2>
             <p class="section-desc" data-en="Upload your eye-tracking &amp; finger-tracking dataset to run the full ML pipeline." data-gr="Ανεβάστε το dataset eye-tracking &amp; finger-tracking για εκτέλεση του ML pipeline.">Upload your eye-tracking &amp; finger-tracking dataset to run the full ML pipeline.</p>
+
+            <!-- Dataset Requirements -->
+            <div class="dataset-req">
+                <h3 data-en="Required Dataset Columns" data-gr="Απαιτούμενες Στήλες Dataset">Required Dataset Columns</h3>
+                <p class="dataset-req-desc" data-en="Your .xlsx or .csv file must include the following columns. Column names must match exactly." data-gr="Το αρχείο .xlsx ή .csv πρέπει να περιλαμβάνει τις παρακάτω στήλες. Τα ονόματα πρέπει να ταιριάζουν ακριβώς.">Your .xlsx or .csv file must include the following columns. Column names must match exactly.</p>
+                <div class="col-groups">
+                    <div class="col-group">
+                        <span class="col-group-label" data-en="Text Identifiers" data-gr="Αναγνωριστικά Κειμένου">Text Identifiers</span>
+                        <div class="col-tags">
+                            <code>gid</code><code>sid</code><code>lid</code><code>tid</code><code>idDoc</code>
+                        </div>
+                    </div>
+                    <div class="col-group">
+                        <span class="col-group-label" data-en="Linguistic Features" data-gr="Γλωσσικά Χαρακτηριστικά">Linguistic Features</span>
+                        <div class="col-tags">
+                            <code>token</code><code>lemma</code><code>orthoSyllablesCount</code><code>POS</code><code>len</code><code>freq</code>
+                        </div>
+                    </div>
+                    <div class="col-group">
+                        <span class="col-group-label" data-en="Session &amp; Participant" data-gr="Συνεδρία &amp; Συμμετέχων">Session &amp; Participant</span>
+                        <div class="col-tags">
+                            <code>idDevice</code><code>idSession</code><code>idUser</code><code>readingType</code><code>Education Level</code>
+                        </div>
+                    </div>
+                    <div class="col-group">
+                        <span class="col-group-label" data-en="WAIS Cognitive Scores" data-gr="Γνωστικές Βαθμολογίες WAIS">WAIS Cognitive Scores</span>
+                        <div class="col-tags">
+                            <code>WAIS Coding</code><code>WAIS Digit Span Ascending</code><code>WAIS Vocabulary</code>
+                        </div>
+                    </div>
+                    <div class="col-group">
+                        <span class="col-group-label" data-en="Eye-Tracking Metrics" data-gr="Μετρήσεις Eye-Tracking">Eye-Tracking Metrics</span>
+                        <div class="col-tags">
+                            <code>FFD</code><code>FPD</code><code>TRT</code><code>RPD</code><code>fixNum</code><code>isFix</code><code>isReg</code><code>reFix</code>
+                        </div>
+                    </div>
+                    <div class="col-group">
+                        <span class="col-group-label" data-en="Finger-Tracking Metrics" data-gr="Μετρήσεις Finger-Tracking">Finger-Tracking Metrics</span>
+                        <div class="col-tags">
+                            <code>dt</code><code>coverage</code>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <div class="upload-zone" id="upload-zone">
                 <div class="upload-icon">

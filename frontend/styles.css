@@ -65,8 +65,8 @@ body {
     padding: 0 32px;
     height: 64px;
     background: rgba(255, 255, 255, 0.92);
-    backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border);
     transition: height 0.3s ease, padding 0.3s ease, box-shadow 0.3s ease;
 }
@@ -382,6 +382,149 @@ body {
     font-size: 0.84rem;
     color: var(--text-secondary);
     line-height: 1.6;
+}
+
+/* Expandable About Cards */
+.about-detail {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.4s ease,
+                margin 0.4s ease;
+    margin-top: 0;
+}
+
+.about-card.expanded .about-detail {
+    max-height: 600px;
+    opacity: 1;
+    margin-top: 14px;
+}
+
+.about-detail ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+}
+
+.about-detail ul li {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    line-height: 1.55;
+    padding: 5px 0 5px 14px;
+    position: relative;
+}
+
+.about-detail ul li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 12px;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--border-hover);
+}
+
+.about-detail ul li strong {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--text);
+}
+
+.formula {
+    font-family: var(--font-mono);
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--text);
+    background: var(--accent-soft);
+    padding: 12px 18px;
+    border-radius: 8px;
+    margin: 12px 0;
+    text-align: center;
+    letter-spacing: 0.02em;
+    border: 1px solid var(--border);
+}
+
+.about-toggle {
+    display: inline-flex;
+    align-items: center;
+    margin-top: 12px;
+    padding: 0;
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--text-tertiary);
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: color var(--transition);
+    border-bottom: 1px dashed var(--border);
+    padding-bottom: 1px;
+}
+
+.about-toggle:hover {
+    color: var(--text);
+    border-bottom-color: var(--text);
+}
+
+/* ═══════════════ DATASET REQUIREMENTS ═══════════════ */
+
+.dataset-req {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px 28px;
+    margin-bottom: 28px;
+}
+
+.dataset-req h3 {
+    font-size: 0.92rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.dataset-req-desc {
+    font-size: 0.82rem;
+    color: var(--text-tertiary);
+    margin-bottom: 18px;
+}
+
+.col-groups {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.col-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.col-group-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.col-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.col-tags code {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    padding: 3px 8px;
+    background: var(--accent-soft);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    color: var(--text);
+    white-space: nowrap;
 }
 
 /* ═══════════════ UPLOAD / ANALYZE ═══════════════ */
@@ -888,6 +1031,10 @@ body {
     }
 
     .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .col-groups {
         grid-template-columns: 1fr;
     }
 }
