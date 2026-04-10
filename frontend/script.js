@@ -2,7 +2,14 @@
    THE-LAG — Frontend Logic v2
    ═══════════════════════════════════════════ */
 
-const API = "http://localhost:8000";
+// ═══════════════════════════════════════════════
+// IMPORTANT: Replace with your Render backend URL
+// e.g. "https://thelag-api.onrender.com"
+// For local development use "http://localhost:8000"
+// ═══════════════════════════════════════════════
+const API = window.location.hostname === "localhost"
+    ? "http://localhost:8000"
+    : "https://YOUR-RENDER-APP-NAME.onrender.com";
 const $ = (sel) => document.querySelector(sel);
 const $$ = (sel) => document.querySelectorAll(sel);
 
@@ -171,11 +178,13 @@ btnRun.addEventListener("click", runPipeline);
 async function runPipeline() {
     if (!selectedFile) return;
 
+    // Clear previous results
+    clearResults();
+
     btnRun.disabled = true;
     $(".btn-label").textContent = currentLang === "gr" ? "Εκτέλεση…" : "Running…";
     $(".btn-spinner").classList.remove("hidden");
     progressSec.classList.remove("hidden");
-    resultsSec.classList.add("hidden");
     progressBar.style.width = "0%";
     progressText.textContent = currentLang === "gr" ? "Ανέβασμα αρχείου…" : "Uploading file…";
 
@@ -212,6 +221,39 @@ async function runPipeline() {
         $(".btn-spinner").classList.add("hidden");
         btnRun.disabled = false;
     }
+}
+
+function clearResults() {
+    // Hide results section
+    resultsSec.classList.add("hidden");
+
+    // Clear metric values
+    $("#xgb-acc").textContent = "—";
+    $("#xgb-f1").textContent = "—";
+    $("#mlp-acc").textContent = "—";
+    $("#mlp-f1").textContent = "—";
+
+    // Clear reports
+    $("#xgb-report").textContent = "";
+    $("#mlp-report").textContent = "";
+
+    // Clear confusion matrices
+    $("#xgb-cm").innerHTML = "";
+    $("#mlp-cm").innerHTML = "";
+
+    // Reset SHAP image
+    shapImg.src = "";
+    shapImg.classList.add("hidden");
+    shapPlaceholder.classList.remove("hidden");
+
+    // Reset cross-correlation image
+    xcorrImg.src = "";
+    xcorrImg.classList.add("hidden");
+    xcorrPlaceholder.classList.remove("hidden");
+
+    // Reset progress
+    progressBar.style.width = "0%";
+    progressText.textContent = "";
 }
 
 async function handleSSE(response) {

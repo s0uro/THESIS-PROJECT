@@ -546,13 +546,14 @@ body {
 }
 
 .upload-icon {
-    color: var(--text-tertiary);
     margin-bottom: 12px;
-    transition: color var(--transition);
+    transition: transform var(--transition), opacity var(--transition);
+    opacity: 0.7;
 }
 
 .upload-zone:hover .upload-icon {
-    color: var(--text);
+    opacity: 1;
+    transform: scale(1.08);
 }
 
 .upload-text {

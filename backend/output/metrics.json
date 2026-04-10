@@ -1,0 +1,45 @@
+{
+  "xgb_accuracy": 0.996,
+  "xgb_f1": 0.5588,
+  "xgb_cm": [
+    [
+      7427,
+      12
+    ],
+    [
+      18,
+      19
+    ]
+  ],
+  "xgb_report": "              precision    recall  f1-score   support\n\n           0       1.00      1.00      1.00      7439\n           1       0.61      0.51      0.56        37\n\n    accuracy                           1.00      7476\n   macro avg       0.81      0.76      0.78      7476\nweighted avg       1.00      1.00      1.00      7476\n",
+  "mlp_accuracy": 0.9902,
+  "mlp_f1": 0.1609,
+  "mlp_cm": [
+    [
+      7396,
+      43
+    ],
+    [
+      30,
+      7
+    ]
+  ],
+  "mlp_report": "              precision    recall  f1-score   support\n\n           0       1.00      0.99      1.00      7439\n           1       0.14      0.19      0.16        37\n\n    accuracy                           0.99      7476\n   macro avg       0.57      0.59      0.58      7476\nweighted avg       0.99      0.99      0.99      7476\n",
+  "test_size": 7476,
+  "feature_names": [
+    "len",
+    "freq",
+    "orthoSyllablesCount",
+    "idSession",
+    "WAIS Coding",
+    "WAIS Digit Span Ascending",
+    "WAIS Vocabulary",
+    "FFD",
+    "FPD",
+    "TRT",
+    "RPD",
+    "fixNum",
+    "coverage",
+    "lag_proxy"
+  ]
+}
