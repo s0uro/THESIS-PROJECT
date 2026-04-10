@@ -9,7 +9,7 @@
 // ═══════════════════════════════════════════════
 const API = window.location.hostname === "localhost"
     ? "http://localhost:8000"
-    : "https://thelag-api.onrender.com";
+    : "https://thesis-project-4qk7.onrender.com";
 const $ = (sel) => document.querySelector(sel);
 const $$ = (sel) => document.querySelectorAll(sel);
 
