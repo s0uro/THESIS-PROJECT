@@ -15,10 +15,22 @@ from config import (
 
 
 def load_raw_data(filepath: str) -> pd.DataFrame:
-    """Load .xlsx or .csv file."""
+    """
+    Load .xlsx or .csv file.
+
+    For .xlsx: try the fast Rust-based 'calamine' engine first
+    (10-20x faster than openpyxl for large files). Fall back to openpyxl
+    if calamine is unavailable or fails.
+    """
     ext = filepath.rsplit(".", 1)[-1].lower()
     if ext == "xlsx":
-        df = pd.read_excel(filepath, engine="openpyxl")
+        df = None
+        try:
+            df = pd.read_excel(filepath, engine="calamine")
+            print("[preprocessing] Loaded xlsx with engine=calamine (fast path).")
+        except Exception as e:
+            print(f"[preprocessing] calamine failed ({e}); falling back to openpyxl.")
+            df = pd.read_excel(filepath, engine="openpyxl")
     elif ext == "csv":
         df = pd.read_csv(filepath)
     else:

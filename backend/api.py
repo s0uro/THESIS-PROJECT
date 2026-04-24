@@ -7,15 +7,37 @@ No authentication. CORS enabled for frontend.
 import os
 import json
 import asyncio
+import hashlib
 import traceback
 from fastapi import FastAPI, UploadFile, File
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, JSONResponse, StreamingResponse
 
 from config import (
-    DATA_DIR, METRICS_PATH,
+    DATA_DIR, OUTPUT_DIR, METRICS_PATH,
     SHAP_SUMMARY_PATH, SHAP_DEPENDENCE_PATH, XCORR_PLOT_PATH,
+    XGB_MODEL_PATH, MLP_MODEL_PATH, SCALER_PATH, SPLIT_INFO_PATH,
 )
+
+# Path to the cache marker that records the hash of the last processed dataset.
+CACHE_MARKER_PATH = os.path.join(OUTPUT_DIR, "last_dataset.sha256")
+
+
+def _sha256_of_file(path: str, chunk_size: int = 1 << 20) -> str:
+    """Stream-hash a file (SHA-256) to detect duplicate uploads cheaply."""
+    h = hashlib.sha256()
+    with open(path, "rb") as f:
+        for chunk in iter(lambda: f.read(chunk_size), b""):
+            h.update(chunk)
+    return h.hexdigest()
+
+
+def _all_artifacts_exist() -> bool:
+    """True iff every pipeline output needed by the frontend is already on disk."""
+    return all(os.path.exists(p) for p in (
+        METRICS_PATH, SHAP_SUMMARY_PATH, XCORR_PLOT_PATH,
+        XGB_MODEL_PATH, MLP_MODEL_PATH, SCALER_PATH, SPLIT_INFO_PATH,
+    ))
 
 app = FastAPI(title="THE-LAG API", version="2.0")
 
@@ -23,7 +45,9 @@ app = FastAPI(title="THE-LAG API", version="2.0")
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
-    allow_credentials=True,
+    # NOTE: With allow_origins=["*"], credentials must be disabled or browsers will block CORS.
+    # We don't rely on cookies/auth here, so keep it False.
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -37,12 +61,31 @@ def sse_event(stage: str, message: str, error: str = None) -> str:
     return f"data: {json.dumps(data)}\n\n"
 
 
-async def run_pipeline_sse(filepath: str):
+async def run_pipeline_sse(filepath: str, file_hash: str):
     """
     Generator that runs the full ML pipeline and yields SSE events.
     Each stage is imported and run inline (not subprocess) for simplicity.
+
+    If the uploaded file is byte-identical to a previous one AND all output
+    artifacts still exist on disk, we short-circuit and return the cached
+    result instantly.
     """
     try:
+        # ── Fast path: identical upload + all outputs cached ──
+        cached_hash = None
+        if os.path.exists(CACHE_MARKER_PATH):
+            try:
+                with open(CACHE_MARKER_PATH, "r", encoding="utf-8") as f:
+                    cached_hash = f.read().strip()
+            except Exception:
+                cached_hash = None
+
+        if cached_hash == file_hash and _all_artifacts_exist():
+            yield sse_event("cache_hit", "Identical dataset detected — returning cached results.")
+            await asyncio.sleep(0)
+            yield sse_event("done", "Pipeline finished (cached).")
+            return
+
         # ── Stage 1: Preprocessing ──
         yield sse_event("preprocessing", "Preprocessing: cleaning data, engineering features...")
         await asyncio.sleep(0)
@@ -53,7 +96,7 @@ async def run_pipeline_sse(filepath: str):
         yield sse_event("preprocessing_done", "Preprocessing complete.")
 
         # ── Stage 2: Training ──
-        yield sse_event("training", "Training: XGBoost (300 trees) + MLP (128-64-32)...")
+        yield sse_event("training", "Training: XGBoost + MLP with SMOTE balancing...")
         await asyncio.sleep(0)
 
         from training import run_training
@@ -88,6 +131,14 @@ async def run_pipeline_sse(filepath: str):
 
         yield sse_event("cross_correlation_done", "Cross-correlation complete.")
 
+        # Persist the hash as "what's currently in the output artifacts" so the
+        # next identical upload can hit the fast path above.
+        try:
+            with open(CACHE_MARKER_PATH, "w", encoding="utf-8") as f:
+                f.write(file_hash)
+        except Exception as e:
+            print(f"[api] Could not write cache marker: {e}")
+
         # ── Done ──
         yield sse_event("done", "Pipeline finished successfully!")
 
@@ -119,11 +170,14 @@ async def upload_and_run(file: UploadFile = File(...)):
     with open(save_path, "wb") as f:
         f.write(content)
 
-    print(f"[api] File saved: {save_path} ({len(content)} bytes)")
+    # Hash the raw bytes (cheap: SHA-256 on ~20MB takes ~50ms) so the
+    # generator can short-circuit for identical re-uploads.
+    file_hash = hashlib.sha256(content).hexdigest()
+    print(f"[api] File saved: {save_path} ({len(content)} bytes, sha256={file_hash[:12]}...)")
 
     # Return SSE stream
     return StreamingResponse(
-        run_pipeline_sse(save_path),
+        run_pipeline_sse(save_path, file_hash),
         media_type="text/event-stream",
         headers={
             "Cache-Control": "no-cache",
@@ -183,6 +237,12 @@ async def get_cross_correlation():
 async def health():
     """Health check endpoint."""
     return {"status": "ok", "service": "THE-LAG API"}
+
+
+@app.get("/ping")
+async def ping():
+    """Lightweight keep-alive endpoint."""
+    return {"status": "ok"}
 
 
 if __name__ == "__main__":

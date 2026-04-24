@@ -4,6 +4,7 @@ python-multipart
 pandas
 numpy
 openpyxl
+python-calamine
 scikit-learn
 xgboost
 imbalanced-learn
